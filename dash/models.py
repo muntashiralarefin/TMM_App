@@ -6,6 +6,11 @@ from django.db import models
 # # Create your models here.
  
 ### Main
+class Yes_no(models.Model):
+    yes_no = models.CharField('Yes or No',max_length=10)
+    def __str__(self):
+        return self.yes_no
+
 class Sex(models.Model):
     sex = models.CharField('Sex',max_length=15)
     def __str__(self):
@@ -62,6 +67,16 @@ class Vacation_package(models.Model):
     def __str__(self):
         return self.vacation_package
 
+class Spot(models.Model):
+    spot = models.CharField('Vacation package offers',max_length=30)
+    def __str__(self):
+        return self.spot
+
+class Satisfaction(models.Model):
+    satisfaction = models.CharField('Vacation package offers',max_length=30)
+    def __str__(self):
+        return self.satisfaction
+      
 #############################################
 
 class Tourist(models.Model):

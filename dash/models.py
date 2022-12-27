@@ -76,7 +76,73 @@ class Satisfaction(models.Model):
     satisfaction = models.CharField('Vacation package offers',max_length=30)
     def __str__(self):
         return self.satisfaction
+
+class Opinion(models.Model):
+    opinion = models.CharField('Opinion Level',max_length=30)
+    def __str__(self):
+        return self.opinion
+
+class Expectation_hotel(models.Model):
+    expectation_hotel = models.CharField('Expectation hotel',max_length=30)
+    def __str__(self):
+        return self.expectation_hotel      
       
+class Reason_food_dissatisfaction(models.Model):
+    reason_food_dissatisfaction = models.CharField('Reason food dissatisfaction',max_length=30)
+    def __str__(self):
+        return self.reason_food_dissatisfaction       
+
+class Expectation_street_food(models.Model):
+    expectation_street_food = models.CharField('Expectation street food',max_length=30)
+    def __str__(self):
+        return self.expectation_street_food 
+
+class Transport(models.Model):
+    transport = models.CharField('Transport',max_length=30)
+    def __str__(self):
+        return self.transport 
+
+class Transport_manage(models.Model):
+    transport_manage = models.CharField('Transport manage',max_length=100)
+    def __str__(self):
+        return self.transport_manage
+
+class Transport_dissatisfaction_reason(models.Model):
+    transport_dissatisfaction_reason = models.CharField('Transport dissatisfaction reason',max_length=200)
+    def __str__(self):
+        return self.transport_dissatisfaction_reason
+
+class Safety_issue(models.Model):
+    safety_issue = models.CharField('Safety issue',max_length=30)
+    def __str__(self):
+        return self.safety_issue
+
+class Spot_expectation(models.Model):
+    spot_expectation = models.CharField('Spot expectation',max_length=30)
+    def __str__(self):
+        return self.spot_expectation
+
+class Opinion_hawker(models.Model):
+    opinion_hawker = models.CharField('Opinion hawker',max_length=200)
+    def __str__(self):
+        return self.opinion_hawker
+
+class Negative_reason_hawker(models.Model):
+    negative_reason_hawker = models.CharField('Negative reason hawker',max_length=200)
+    def __str__(self):
+        return self.negative_reason_hawker
+
+class Clean_suggestion(models.Model):
+    clean_suggestion = models.CharField('Clean suggestion',max_length=30)
+    def __str__(self):
+        return self.clean_suggestion
+
+class Recommendation_improve(models.Model):
+    recommendation_improve = models.CharField('Recommendation improve',max_length=200)
+    def __str__(self):
+        return self.recommendation_improve
+
+   
 #############################################
 
 class Tourist(models.Model):

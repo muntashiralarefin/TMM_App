@@ -14,6 +14,6 @@ from .models import *
 
 
 # admin.site.register([Sex, SexAdmin])
-@admin.register(Yes_no, Sex, District, Occupation, Education, Tour_type, Travel_interest, Travel_season, CBT_attraction, CBT_facility, Vacation_package, Satisfaction, Spot)
+@admin.register(Yes_no, Sex, District, Occupation, Education, Tour_type, Travel_interest, Travel_season, CBT_attraction, CBT_facility, Vacation_package, Satisfaction, Spot, Opinion, Expectation_hotel, Reason_food_dissatisfaction, Expectation_street_food, Transport, Transport_manage, Transport_dissatisfaction_reason, Safety_issue, Spot_expectation, Opinion_hawker, Negative_reason_hawker, Clean_suggestion, Recommendation_improve)
 class ViewAdmin(ImportExportModelAdmin):
     pass

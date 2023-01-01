@@ -209,6 +209,8 @@ class Tourist(models.Model):
 class Survey(models.Model):
     Yes_No = [('Yes', 'Yes'), ('No', 'No')]
     Sat_level = [("Very satisfied","Very satisfied"), ("Satisfied","Satisfied"), ("Neutral","Neutral"), ("Dissatisfied", "Dissatisfied"), ("Very dissatisfied","Very dissatisfied")]
+
+    name = models.CharField('Name', blank=True, max_length=10)
   
     b1 = models.ForeignKey(District, related_name='visited_dist', blank=True, null=True, on_delete = models.SET_NULL,verbose_name = u'B1_  Select your visited district') # Select your visited district?
   
@@ -232,9 +234,9 @@ class Survey(models.Model):
 
     b8_1 = models.CharField("B8_1_(If b3 is yes) Others (What are your recommendations to improve community based tourism?)", blank=True, null=True, max_length=500)
 
-    # c1 = models.ForeignKey(Yes_no , blank=True, null=True, on_delete = models.SET_NULL) # Have you received service from tour operator?
+    c1 = models.CharField('C1_Have you received service from tour operator?', choices=Yes_No, blank=True, max_length=10) # Have you received service from tour operator?
 
-    # c2 = models.ForeignKey(Satisfaction, blank=True, null=True, on_delete = models.SET_NULL) #(If c1 is yes) How you evaluate the professionalism of tour operators?
+    c2 = models.CharField('C2_(If c1 is yes) How you evaluate the professionalism of tour operators?', choices=Sat_level, blank=True, max_length=20) #(If c1 is yes) How you evaluate the professionalism of tour operators?
 
     # c3 = models.ManyToManyField(Cbt_Recommendation, blank=True) #(If c2 is dissatisfaction) Reason behind dissatisfaction
 
@@ -274,7 +276,7 @@ class Survey(models.Model):
 
         
     def __str__(self):
-        return self.b1 + " ID:" + str(self.id)
+        return self.name
 
 
 

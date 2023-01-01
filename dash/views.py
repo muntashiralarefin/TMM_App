@@ -14,3 +14,5 @@ def story(request):
 def about(request):
     return render(request, 'dash/about.html', {})
 
+# def about(request):
+#     return render(request, 'dash2/index.html', {})

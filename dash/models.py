@@ -132,6 +132,11 @@ class Negative_reason_hawker(models.Model):
     def __str__(self):
         return self.negative_reason_hawker
 
+class Hawker_suggest(models.Model):
+    hawker_suggest = models.CharField('Suggests for hawker',max_length=200)
+    def __str__(self):
+        return self.hawker_suggest
+
 class Clean_suggestion(models.Model):
     clean_suggestion = models.CharField('Clean suggestion',max_length=200)
     def __str__(self):
@@ -186,6 +191,11 @@ class Tour_operator_dissatisfaction(models.Model):
     tour_operator_dissatisfaction = models.CharField('Reason behind dissatisfaction on tour operator',max_length=200)
     def __str__(self):
         return self.tour_operator_dissatisfaction
+
+class Highway_transport_dissatisfaction_reason(models.Model):
+    highway_transport_dissatisfaction_reason = models.CharField('Highway transport dissatisfaction reason',max_length=200)
+    def __str__(self):
+        return self.highway_transport_dissatisfaction_reason
       
 #############################################
 
@@ -218,7 +228,7 @@ class Survey(models.Model):
   
     b3 = models.CharField('B3_Do you know about community based tourism?',choices=Yes_No, blank=True, max_length=10) # Do you know about community based tourism?
   
-    b4 = models.CharField('B4_Do you know about community based tourism?', choices=Yes_No, blank=True, max_length=10) #(If b3 is yes) Do you think community based tourism need to be started in here?
+    b4 = models.CharField('B4_(If b3 is yes) Do you think community based tourism need to be started in here?', choices=Yes_No, blank=True, max_length=10) #(If b3 is yes) Do you think community based tourism need to be started in here?
   
     b5 = models.CharField('B5_(If b3 is yes) Will you visit any community if community based tourism is started?', choices=Yes_No, blank=True, max_length=10) #(If b3 is yes) Will you visit any community if community based tourism is started?
   
@@ -238,41 +248,131 @@ class Survey(models.Model):
 
     c2 = models.CharField('C2_(If c1 is yes) How you evaluate the professionalism of tour operators?', choices=Sat_level, blank=True, max_length=20) #(If c1 is yes) How you evaluate the professionalism of tour operators?
 
-    # c3 = models.ManyToManyField(Cbt_Recommendation, blank=True) #(If c2 is dissatisfaction) Reason behind dissatisfaction
+    c3 = models.ManyToManyField(Tour_operator_dissatisfaction, blank=True, verbose_name=u'C3_(If c2 is dissatisfaction) Reason behind dissatisfaction') #(If c2 is dissatisfaction) Reason behind dissatisfaction
 
-    # c3_1 = models.CharField("(If c2 is dissatisfaction) Others (Reason behind dissatisfaction)", blank=True, null=True, max_length=500)
+    c3_1 = models.CharField("C3_1_(If c2 is dissatisfaction) Others (Reason behind dissatisfaction)", blank=True, null=True, max_length=500)
 
-    # c4 = models.ManyToManyField(Vacation_package, blank=True) # As a tourist, what you want in a vacation package?
+    c4 = models.ManyToManyField(Vacation_package, blank=True, verbose_name=u'C4_As a tourist, what you want in a vacation package?') # As a tourist, what you want in a vacation package?
 
-    # c4_1 = models.CharField("Others (As a tourist, what you want in a vacation package?)", blank=True, null=True, max_length=500)
+    c4_1 = models.CharField("C4_1_Others (As a tourist, what you want in a vacation package?)", blank=True, null=True, max_length=500)
 
-    # c5 = models.ManyToManyField(Tour_operator_recommendation, blank=True) # What are your recommendations for tour operators?
+    c5 = models.ManyToManyField(Tour_operator_recommendation, blank=True, verbose_name=u'C5_What are your recommendations for tour operators?') # What are your recommendations for tour operators?
 
-    # c5_1 = models.CharField(" Others (What are your recommendations for tour operators?)", blank=True, null=True, max_length=500)
+    c5_1 = models.CharField("C5_1_ Others (What are your recommendations for tour operators?)", blank=True, null=True, max_length=500)
 
-    # d1 = models.ForeignKey(Opinion, blank=True, null=True, on_delete = models.SET_NULL) # What is your opinion on the cost of hotel in tourist spots?
+    d1 = models.ForeignKey(Opinion, blank=True, null=True, on_delete = models.SET_NULL, verbose_name=u'D1_What is your opinion on the cost of hotel in tourist spots?') # What is your opinion on the cost of hotel in tourist spots?
 
-    # d2 = models.ForeignKey(Satisfaction, blank=True, null=True, on_delete = models.SET_NULL)
+    d2 = models.CharField('D2_Are you satisfied with hotel room service?', blank=True, max_length=30, choices=Sat_level)
 
-    # d3 = models.ManyToManyField(Room_service_dissatisfaction , blank=True) #(If d2 is dissatisfaction) Reason behind dissatisfation
+    d3 = models.ManyToManyField(Room_service_dissatisfaction , blank=True, verbose_name=u'D3_(If d2 is dissatisfaction) Reason behind dissatisfation') #(If d2 is dissatisfaction) Reason behind dissatisfation
 
-    # d3_1 = models.CharField(" Others (What are your recommendations for tour operators?)", blank=True, null=True, max_length=500)
+    d3_1 = models.CharField("D3_1_Others (What are your recommendations for tour operators?)", blank=True, null=True, max_length=500)
 
-    # d4 = models.ForeignKey(Satisfaction, blank=True, null=True, on_delete = models.SET_NULL) # Are you satisfied with hotel residence system in tourist spot?
+    d4 = models.CharField('D4_Are you satisfied with hotel residence system in tourist spot?', blank=True, choices=Sat_level, max_length=500) # Are you satisfied with hotel residence system in tourist spot?
 
-    # d5 = models.ManyToManyField(Hotel_residence_dissatisfaction , blank=True) #(If d4 is dissatisfaction) Reason behind dissatisfation
+    d5 = models.ManyToManyField(Hotel_residence_dissatisfaction , blank=True, verbose_name=u'D5_(If d4 is dissatisfaction) Reason behind dissatisfation') #(If d4 is dissatisfaction) Reason behind dissatisfation
 
-    # d5_1 = models.CharField("(If d4 is dissatisfaction) Others (Reason behind dissatisfation)", blank=True, null=True, max_length=500)
+    d5_1 = models.CharField("D5_1_(If d4 is dissatisfaction) Others (Reason behind dissatisfation)", blank=True, null=True, max_length=500)
 
-    # d6 = models.ManyToManyField(Expectation_hotel , blank=True) # What is your recommendations for hotel service?
+    d6 = models.ManyToManyField(Expectation_hotel , blank=True, verbose_name=u'D6_What is your recommendations for hotel service?') # What is your recommendations for hotel service?
 
-    # d6_1 = models.CharField(" Other ( What is your recommendations for hotel service?)", blank=True, null=True, max_length=500)
+    d6_1 = models.CharField("D6_1_Other ( What is your recommendations for hotel service?)", blank=True, null=True, max_length=500)
 
-    # d7 = models.ForeignKey(Satisfaction, related_name='Satis-d7' ,blank=True, null=True, on_delete = models.SET_NULL) #  Are you satisfied with the food of restaurant?
+    d7 = models.CharField('D7_Are you satisfied with the food of restaurant?', blank=True, max_length=30, choices=Sat_level) #  Are you satisfied with the food of restaurant?
 
-    # d8 = models.ManyToManyField(Reason_food_dissatisfaction , blank=True) # (If d7 is dissatisfaction) Reason behind dissatisfation
+    d8 = models.ManyToManyField(Reason_food_dissatisfaction , blank=True, verbose_name=u'D8_(If d7 is dissatisfaction) Reason behind dissatisfation') # (If d7 is dissatisfaction) Reason behind dissatisfation
 
-    # d8_1 = models.CharField("(If d7 is dissatisfaction) Others (Reason behind dissatisfation)", blank=True, null=True, max_length=500) #(If d7 is dissatisfaction) Others (Reason behind dissatisfation)
+    d8_1 = models.CharField('D8_1_(If d7 is dissatisfaction) Others (Reason behind dissatisfation)', blank=True, null=True, max_length=500) #(If d7 is dissatisfaction) Others (Reason behind dissatisfation)
+
+    d9 = models.CharField('D9_ Do you like street food of tourist spots?', blank=True, max_length=10, choices=Yes_No) # Do you like street food of tourist spots?
+
+    d10 = models.ManyToManyField( Expectation_street_food, blank=True, verbose_name=u'D10_ What you expect from street food sellers during food serving?') # What you expect from street food sellers during food serving?
+  
+    d10_1 = models.CharField('D10_1_ Other expectations on street food', blank=True, null=True, max_length=500) # Other expectations on street food
+  
+    d11 = models.ManyToManyField( Food_seller_recommendation, blank=True, verbose_name=u'D11_ What is your recommendation to increase the skill of food seller?') # What is your recommendation to increase the skill of food seller?
+  
+    d11_1 = models.CharField('D11_1_ Others (What is your recommendation to increase the skill of food seller?)', blank=True, null=True, max_length=500) # Others (What is your recommendation to increase the skill of food seller?)
+    
+    e1 = models.ManyToManyField( Transport, blank=True, verbose_name=u'E1_ What transport you used to travel?') # What transport you used to travel?
+  
+    e1_1 = models.CharField('E1_1_ Mention other transport', blank=True, null=True, max_length=500) # Mention other transport
+  
+    e2 = models.CharField('E2_Have you managed your transport by own to come here?', blank=True, max_length=10, choices=Yes_No) # Have you managed your transport by own to come here?
+  
+    e3 = models.ForeignKey( Transport_manage, blank=True, null=True, on_delete = models.SET_NULL, verbose_name=u'E3_ How you have managed transport?') #  How you have managed transport?
+  
+    e3_1 = models.CharField('E3_1_ Mention other process', blank=True, null=True, max_length=500) # Mention other process
+  
+    e4 = models.CharField('E4_ Are you satisfied with the highway transport system?', blank=True, max_length=200, choices=Sat_level) #  Are you satisfied with the highway transport system?
+  
+    e5 = models.ManyToManyField( Highway_transport_dissatisfaction_reason, blank=True, verbose_name=u'E5_(If e4 is dissatisfaction) Reason behind dissatisfation') #(If e4 is dissatisfaction) Reason behind dissatisfation
+  
+    e5_1 = models.CharField('E5_1_(If e4 is dissatisfaction) Others (Reason behind dissatisfation)', blank=True, null=True, max_length=500) #(If e4 is dissatisfaction) Others (Reason behind dissatisfation)
+  
+    e6 = models.CharField('E6_Are you satisfied with the internal transport (tomtom/riksha) of this area?', blank=True, max_length=30, choices=Sat_level) #  Are you satisfied with the internal transport (tomtom/riksha) of this area?
+  
+    e7 = models.ManyToManyField( Transport_dissatisfaction_reason, blank=True, verbose_name=u'E7_(If e6 is dissatisfaction) Reason behind dissatisfation') #(If e6 is dissatisfaction) Reason behind dissatisfation
+  
+    e7_1 = models.CharField('E7_1_(If e6 is dissatisfaction) Others (Reason behind dissatisfation)', blank=True, null=True, max_length=500) #(If e6 is dissatisfaction) Others (Reason behind dissatisfation)
+  
+    e8 = models.ManyToManyField( Transport_recommendation, blank=True, verbose_name=u'E8_ What is your recommendation to increase the skill of tomtom/riksha driver?') # What is your recommendation to increase the skill of tomtom/riksha driver?
+  
+    e8_1 = models.CharField('E8_1_ Others (What is your recommendation to increase the skill of tomtom/riksha driver?)', blank=True, null=True, max_length=500) # Others (What is your recommendation to increase the skill of tomtom/riksha driver?)
+    
+    f1 = models.CharField('F1_ Do you like midnight travelling?', blank=True, max_length=10, choices=Yes_No) #  Do you like midnight travelling?
+  
+    f2 = models.CharField('F2_ Do you think this place is safe for midnight visiting?', blank=True, max_length=10, choices=Yes_No) #  Do you think this place is safe for midnight visiting?
+  
+    f3 = models.CharField('F3_Are you satisfied the security of this place?', blank=True, max_length=30, choices=Sat_level) #  Are you satisfied the security of this place?
+  
+    f4 = models.CharField('F4_ Have you ever harrassed by local people?', blank=True, max_length=10, choices=Yes_No) #  Have you ever harrassed by local people?
+  
+    f5 = models.CharField('F5_ Have you ever faced any problem during visiting tourist spot?', blank=True, max_length=10, choices=Yes_No) # Have you ever faced any problem during visiting tourist spot? 
+  
+    f6 = models.ManyToManyField( Safety_issue, blank=True, verbose_name=u'F6_(If f4 or f5 yes) What type of problems you faced?') #(If f4 or f5 yes) What type of problems you faced?
+  
+    f6_1 = models.CharField('F6_1_ Other problems', blank=True, null=True, max_length=500) # Other problems
+  
+    f7 = models.ManyToManyField( Safety_recommendation, blank=True, verbose_name=u'F7_ How do you think these problem can be solved?') # How do you think these problem can be solved?
+  
+    f7_1 = models.CharField('F7_1_ Others (How do you think these problem can be solved?)', blank=True, null=True, max_length=500) # Others (How do you think these problem can be solved?)
+    
+    h1 = models.CharField('H1_ Do you know about the activity of tourist police?', blank=True, max_length=10, choices=Yes_No) #  Do you know about the activity of tourist police?
+  
+    h2 = models.CharField('H2_ Do you ever received any service from tourist police?', blank=True, max_length=10, choices=Yes_No) #  Do you ever received any service from tourist police?
+  
+    h3 = models.ManyToManyField( Tourist_police_services, blank=True, verbose_name=u'H3_(If h2 is yes) What type of service you received?') #(If h2 is yes) What type of service you received?
+  
+    h3_1 = models.CharField('', blank=True, null=True, max_length=500) #
+    
+    g1 = models.ForeignKey( Opinion_hawker, blank=True, null=True, on_delete = models.SET_NULL, verbose_name=u'G1_What is your opinion on presence of hawker in tourist spot?') #  What is your opinion on presence of hawker in tourist spot?
+  
+    g2 = models.ManyToManyField( Negative_reason_hawker, blank=True, verbose_name=u'G2_(If g1 is negative) Reasons behind negative opinion') #(If g1 is negative) Reasons behind negative opinion
+  
+    g2_1 = models.CharField('G2_1_ Other (Reasons behind negative opinion)', blank=True, null=True, max_length=500) # Other (Reasons behind negative opinion)
+  
+    g3 = models.CharField('G3_ Do you think rehabilitation of hawkers is necessary?', blank=True, max_length=10, choices=Yes_No) #  Do you think rehabilitation of hawkers is necessary?
+  
+    g4 = models.ManyToManyField( Hawker_suggest, blank=True, verbose_name=u'G4_ What are your recommendations to increase the skill of hawkers?') # What are your recommendations to increase the skill of hawkers?
+  
+    g4_1 = models.CharField('G4_1_ Others ( What are your recommendations to increase the skill of hawkers?)', blank=True, null=True, max_length=500) # Others recommendations
+    
+    i1 = models.CharField('I1_Do you think this tourist spot is cleaned enough?', blank=True, max_length=10, choices=Yes_No) #  Do you think this tourist spot is cleaned enough?
+  
+    i2 = models.CharField('I2_Do you think you are cooperating to clean this area?', blank=True, max_length=10, choices=Yes_No) #  Do you think you are cooperating to clean this area?
+  
+    i3 = models.ManyToManyField(Clean_suggestion, blank=True, verbose_name=u'I3_ What is your recemmendation to clean this area?') # What is your recemmendation to clean this area?
+  
+    i3_1 = models.CharField('I3_1_ Others', blank=True, null=True, max_length=500) # Others
+    
+    k1 = models.ManyToManyField(Spot_expectation , blank=True, verbose_name=u'K1_What you expect from tourist spot?') #What you expect from tourist spot?
+  
+    k1_1 = models.CharField('K1_1_ Others ( What you expect from tourist spot?)', blank=True, null=True, max_length=500) # Others expectation
+  
+    k2 = models.ManyToManyField(Recommendation_improve, blank=True, verbose_name=u'K2_How tourism sector can be developed according to you?') #
+  
+    k2_1 = models.CharField('K2_1_ Other ( How tourism sector can be developed according to you?)', blank=True, null=True, max_length=500) # Other recommendations
 
         
     def __str__(self):

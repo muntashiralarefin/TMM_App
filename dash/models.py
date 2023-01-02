@@ -216,6 +216,7 @@ class Tourist(models.Model):
     def __str__(self):
         return self.a1_name
 
+################################
 class Survey(models.Model):
     Yes_No = [('Yes', 'Yes'), ('No', 'No')]
     Sat_level = [("Very satisfied","Very satisfied"), ("Satisfied","Satisfied"), ("Neutral","Neutral"), ("Dissatisfied", "Dissatisfied"), ("Very dissatisfied","Very dissatisfied")]

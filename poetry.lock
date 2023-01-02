@@ -122,6 +122,17 @@ pytz = ">=2020.1"
 test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
 
 [[package]]
+name = "plotly"
+version = "5.11.0"
+description = "An open-source, interactive data visualization library for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+tenacity = ">=6.2.0"
+
+[[package]]
 name = "python-dateutil"
 version = "2.8.2"
 description = "Extensions to the standard Python datetime module"
@@ -191,6 +202,17 @@ xlsx = ["openpyxl (>=2.6.0)"]
 yaml = ["pyyaml"]
 
 [[package]]
+name = "tenacity"
+version = "8.1.0"
+description = "Retry code until it succeeds"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
 name = "xlrd"
 version = "2.0.1"
 description = "Library for developers to extract data from Microsoft Excel (tm) .xls spreadsheet files"
@@ -214,7 +236,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "c244732abe8b76210b3838519506563492af36c8480fb20b27b7d2547ea153ea"
+content-hash = "6aa9097daaf6258cb7c7822b36962183a5ebc23de943e74f71f2769212c9b828"
 
 [metadata.files]
 asgiref = []
@@ -228,11 +250,13 @@ numpy = []
 odfpy = []
 openpyxl = []
 pandas = []
+plotly = []
 python-dateutil = []
 pytz = []
 pyyaml = []
 six = []
 sqlparse = []
 tablib = []
+tenacity = []
 xlrd = []
 xlwt = []

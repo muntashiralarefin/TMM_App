@@ -202,7 +202,7 @@ class Highway_transport_dissatisfaction_reason(models.Model):
 class Tourist(models.Model):
     a1_name = models.CharField('Tourist name',max_length=30)
     a2_age = models.IntegerField('Age', blank=True)
-    a3_gender = models.ForeignKey(Sex , blank=True, null=True, on_delete = models.SET_NULL)
+    a3_gender = models.ForeignKey(Sex, blank=True, null=True, on_delete = models.SET_NULL)
     a4_occupation = models.ForeignKey(Occupation , blank=True, null=True, on_delete = models.SET_NULL)
     a5_education = models.ForeignKey(Education , blank=True, null=True, on_delete = models.SET_NULL)
     a6_mobile = models.CharField('Mobile',max_length=15, blank=True)

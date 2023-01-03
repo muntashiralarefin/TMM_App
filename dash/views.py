@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.db.models import Count
-import pandas as pd
-import plotly.express as px
+# import pandas as pd
+# import plotly.express as px
 
 
 def home(request):
@@ -66,14 +66,22 @@ def home(request):
     return [level, percentage, countres, total]
 
   # ###############################################################
-  rr = analysis2('b3')
-  print('Result B3: ',rr)
+  b3a = analysis2('b3')
+  #b4a = analysis3()
+  print('Result B3: ',b3a)
   r = analysis3('b6', CBT_attraction, 'cbt_attraction')
-  print('Result B6: ',r)
+  dic = dict(zip(r[0], r[1]))
+  print('Result B6: ',[*dic.keys()])
+  print('Result B6: ',list(dic.values()))
+  b3_l = [*dic.keys()]
+  b3_v = list(dic.values())
   # fig = px.bar(x=["a", "b", "c"], y=[1, 3, 2])
 
   return render(request, 'dash/home.html', {
-    
+    'b3_l':b3_l,
+    'b3_v':b3_v,
+    'dic':dic,
+    'r':r
   })
 
 def survey(request):

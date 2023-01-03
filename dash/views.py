@@ -77,7 +77,7 @@ def home(request):
   b3_v = list(dic.values())
   # fig = px.bar(x=["a", "b", "c"], y=[1, 3, 2])
 
-  return render(request, 'dash/home.html', {
+  return render(request, 'dash/dashboard.html', {
     'b3_l':b3_l,
     'b3_v':b3_v,
     'dic':dic,
@@ -86,7 +86,7 @@ def home(request):
 
 def survey(request):
 
-  return render(request, 'dash/survey.html', {})
+  return render(request, 'dash/Dashboards.Default.html', {})
 
 def story(request):
     return render(request, 'dash/story.html', {})

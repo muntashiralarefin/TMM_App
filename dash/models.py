@@ -350,7 +350,7 @@ class Survey(models.Model):
   
     h3 = models.ManyToManyField( Tourist_police_services, blank=True, verbose_name=u'H3_(If h2 is yes) What type of service you received?') #(If h2 is yes) What type of service you received?
   
-    h3_1 = models.CharField('', blank=True, null=True, max_length=500) #
+    h3_1 = models.CharField('H3_1_ Others (What type of service you received?)', blank=True, null=True, max_length=500) #
     
     g1 = models.ForeignKey( Opinion_hawker, blank=True, null=True, on_delete = models.SET_NULL, verbose_name=u'G1_What is your opinion on presence of hawker in tourist spot?') #  What is your opinion on presence of hawker in tourist spot?
   

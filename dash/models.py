@@ -62,18 +62,23 @@ class CBT_facility(models.Model):
     def __str__(self):
         return self.cbt_facility
 
+class CBT_rec1(models.Model):
+    cbt_rec1 = models.CharField('CBT recommendation',max_length=300)
+    def __str__(self):
+        return self.cbt_rec1
+
 class Vacation_package(models.Model):
     vacation_package = models.CharField('Vacation package offers',max_length=50)
     def __str__(self):
         return self.vacation_package
 
 class Spot(models.Model):
-    spot = models.CharField('Vacation package offers',max_length=50)
+    spot = models.CharField('Spot',max_length=50)
     def __str__(self):
         return self.spot
 
 class Satisfaction(models.Model):
-    satisfaction = models.CharField('Vacation package offers',max_length=30)
+    satisfaction = models.CharField('Satisfaction level',max_length=30)
     def __str__(self):
         return self.satisfaction
 
@@ -147,10 +152,10 @@ class Recommendation_improve(models.Model):
     def __str__(self):
         return self.recommendation_improve
 
-class Cbt_Recommendation(models.Model):
-    cbt_Recommendation = models.CharField('Recommendations for CBT',max_length=200)
+class Cbt_recommendation(models.Model):
+    cbt_recommendation = models.CharField('Recommendations for CBT',max_length=200)
     def __str__(self):
-        return self.cbt_Recommendation
+        return self.cbt_recommendation
 
 class Tour_operator_recommendation(models.Model):
     tour_operator_recommendation = models.CharField('Recommendations for Tour operator',max_length=200)
@@ -241,7 +246,7 @@ class Survey(models.Model):
   
     b7_1 = models.CharField("B7_1_(If b3 is yes) Others (Which facilities you expect during community visit?)", blank=True, null=True, max_length=500) #(If b3 is yes) Others (Which facilities you expect during community visit?)
 
-    b8 = models.ManyToManyField(Cbt_Recommendation, blank=True, verbose_name=u'B8_(If b3 is yes) What are your recommendations to improve community based tourism?') #(If b3 is yes) What are your recommendations to improve community based tourism?
+    b8 = models.ManyToManyField(CBT_rec1, blank=True, verbose_name=u'B8_(If b3 is yes) What are your recommendations to improve community based tourism?') #(If b3 is yes) What are your recommendations to improve community based tourism?
 
     b8_1 = models.CharField("B8_1_(If b3 is yes) Others (What are your recommendations to improve community based tourism?)", blank=True, null=True, max_length=500)
 

@@ -1,38 +1,537 @@
-{% extends 'dash/base.html' %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Bootcamp</title>
+  </head>
+  <body>
 
-<h1>Alhumdulillah</h1>
-<br>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="{% url 'home' %}" class="navbar-brand">Tourist Mind Mapping</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="#Survey" class="nav-link">Survey Form</a>
+            </li>
+            <li class="nav-item">
+              <a href="#Signin" class="nav-link">Signin</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!--     Nav End -->
+
+<!-- Title Showcase -->
+<!-- Showcase -->
+    <section
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start" 
+    >
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1>Overview on <br>
+ <span class="text-warning"> ‘Tourists’ Mind Mapping and Experience’ <br></span>Survey at Cox’s Bazar</h1><br>
+            <p class="lead my-9">
+              UNDP Accelerator Lab has conducted tourist mind mapping surveys in different tourism-centric districts of the country on tourists to understand their satisfaction and expectations. This initiative is ongoing in one-after-another selected districts. 
+            </p>
+
+          </div>
+          <img
+            class="img-fluid w-50 d-none d-sm-block"
+            src="{% static 'tmm/t-pic.gif' %}"
+            alt=""
+          />
+                    
+        </div>
+      </div>
+    </section>
+
+<!--           Objective -->
+    <section class="bg-secondary text-light p-5">
+      <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center">
+<!--           Objective text -->
+                    <div class='text-light p-3'>
+            <h3>Objective</h3>
+          </div>
+          <div class='text-light p-3'>
+            <h9>1. REALIZATION: To realize the satisfaction scenario and reasons of dissatisfaction of tourists</h9>
+          </div>
+          <div class='text-light p-3'>
+            <h9>2. SUGGESTION: To know the expectation and recommendations of tourist
+</h9> 
+          </div>
+          <div class='text-light p-3'>
+            <h9>3. COOPERATION: To make proper plans for the improvement of our tourism sector and to cooperate the relevant authority
+</h9> 
+          </div>
+          <div class='text-light p-3'>
+            <h9>4. DEVELOPMENT: To inform the stakeholders about the issues and planning for the proper execution
+</h9>
+          </div>
+         
+                                             
+        </div>
+      </div>
+    </section>
+    <!--           Objective end -->
+
+    <!-- Satisfaction Boxe-1 -->
+    <section class="p-5">
+      <div class="container">
+        <div class="row text-center g-4">
+
+<!--           Start Box-1 -->
+          <div class="col-4">
+
+            <div class="card bg-dark text-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-house"></i>
+                </div>
+                <h3 class="card-title mb-3">Food Satisfaction</h3>
+
+<!-- Pie-1 -->
+<div>
+  <canvas id="pie1" ></canvas>
+</div>
+                
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Iure, quas quidem possimus dolorum esse eligendi?
+                </p>
+<!--                 <a href="#" class="btn btn-primary">Read More</a> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+
+            <div class="card bg-dark text-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-house"></i>
+                </div>
+                <h3 class="card-title mb-3">Residence Satisfaction</h3>
+<!--                 Pie-2 -->
 
 <div>
-  <canvas id="myChart"></canvas>
+  <canvas id="pie2" ></canvas>
+</div>
+               
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Iure, quas quidem possimus dolorum esse eligendi?
+                </p>
+<!--                 <a href="#" class="btn btn-primary">Read More</a> -->
+              </div>
+            </div>
+          </div>
+<!-- End box 2 -->
+
+<!--           Start Box-3 -->
+          <div class="col-4">
+
+            <div class="card bg-dark text-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-house"></i>
+                </div>
+                <h3 class="card-title mb-3">Transport Satisfaction</h3>
+
+<!-- Pie-3 -->
+<div>
+  <canvas id="pie3" ></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-  const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: {{ r.0|safe }} ,
-      datasets: [{
-        label: '# of Votes',
-        data: {{ r.1|safe }},
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+                
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Iure, quas quidem possimus dolorum esse eligendi?
+                </p>
+<!--                 <a href="#" class="btn btn-primary">Read More</a> -->
+              </div>
+            </div>
+          </div>
 
-<!-- {{ fig | safe }} -->
+<!--           End Box-3 -->
 
-{% endblock %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Based Tourism (CBT)  -->
+    <section id="learn" class="bg-dark text-light p-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+<!--           Chart - CBT -->
+          <div class="col-7">
+             <div>
+              <canvas id="cbt"></canvas>
+              </div>
+
+          </div>  
+
+          <div class="col-md p-5">
+            <h2>Community Based Tourism (CBT)</h2>
+            <p class="lead">
+              Most of the tourists of Cox’s Bazar don’t know about community based tourism. So, it need to make more popular.<br>
+Also, authority need to promote local culture and heritage for tourists attraction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Community Based Tourism (CBT)  -->
+
+<!--     Vacation Package & Tour Operator -->
+    <section id="learn" class="p-5 bg-light text-dark">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md p-5">
+            <h2>Vacation Package & Tour Operator</h2>
+            <p class="lead">
+              In vacation package, most of the tourists want hotel and food facility as these are the most complicated part of a tour. Some tourists want other facilities as well.<br>
+
+Tourists who visit Cox’s Bazar 88% don’t receive the service of tour operator usually. They try to visit on their own.
+
+            </p>
+
+
+          </div>
+          <div class="col-7">
+<!--             Chart Vacation package -->
+            <div>
+  <canvas id="vpac"></canvas>
+</div>
+<!--             <img src="img/react.svg" class="img-fluid" alt="" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Hotel Cost & Expectation  -->
+    <section id="learn" class="bg-dark text-light p-4">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+<!--           Chart - hotel cost -->
+          <div class="col-4">
+             <div>
+              <canvas id="hotel_cost"></canvas>
+              </div>
+          </div>  
+
+          <div class="col-md p-4">
+            <h2>Hotel Cost & Expectation</h2>
+            <p class="lead">
+              Most of the tourists (53%) think that the hotel cost is expected in Cox’s Bazar. Similarly, around 43% tourists thing the cost is high.<br>
+Besides,  majority of the tourists expect safe environment and good room service.<br>
+Resent condition and review of service receiver should be available in online.
+            </p>
+          </div>
+            <!--           Chart - hotel Expectation -->
+          <div class="col-4">
+             <div>
+              <canvas id="hotel_expectation"></canvas>
+              </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+    <!-- End Hotel Cost & Expectation  -->
+<!--     Midnight Travel & Security -->
+    <section id="learn" class="p-3 bg-light text-dark">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md p-5">
+            <h2>Midnight Travel, Safety & Security</h2>
+            <p class="lead">
+              Almost two-thirds tourists prefer travel in midnight and they think it is safe for them, which is a positive sign.<br>
+Most of the tourists (79%) are satisfied on overall security.<br><br>
+92% tourists of Cox’s Bazar know about tourist police. <br>
+But, since the rate of harassment is very low, the tourists don’t receive direct service of tourist police frequently. Only 3% tourist need direct service from tourist police.
+            </p>
+          </div>
+          <div class="col-7">
+<!--             Chart Satisfaction on security -->
+            <div>
+  <canvas id="Satisfaction_security"></canvas>
+</div>
+<!--             <img src="img/react.svg" class="img-fluid" alt="" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+<!--     Midnight Travel & Security -->
+
+
+        <!-- Transport  -->
+    <section id="learn" class="bg-dark text-light p-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+<!--           Chart - Transport -->
+          <div class="col-7">
+             <div>
+              <canvas id="Transport"></canvas>
+              </div>
+
+          </div>  
+
+          <div class="col-md p-5">
+            <h2>Transport System</h2>
+            <p class="lead">
+              We can see, the main reason for tourists’ dissatisfaction on transport is high rent (62%). Insecurity also a major issue.<br>
+But, overall tourists are satisfied on both internal (tomtom/riksha) and highway transport service. Dissatisfaction on internal transport is little bit high.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Transport  -->
+
+<!--     Street Food -->
+
+    <section id="learn" class="p-4 bg-light text-dark">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+
+                    <div class="col-4">
+<!--             Chart Expectation from street food shop  -->
+            <div>
+  <canvas id="street_food_e"></canvas>
+</div>
+<!--             <img src="img/react.svg" class="img-fluid" alt="" /> -->
+          </div>
+          
+          <div class="col-md p-4">
+            <h2>Street Food</h2>
+            <p class="lead">
+              In our survey, more than half (55%) tourists don’t like street food in Cox’s Bazar. <br>
+Most of the tourists (86%) expects healthy food from street food shops.
+The main reason of their dissatisfaction is high price.<br>
+            </p>
+
+
+          </div>
+          <div class="col-4">
+<!--             Chart Reasons behind dissatisfaction on food
+ street food shop -->
+            <div>
+  <canvas id="street_food_dis"></canvas>
+</div>
+<!--             <img src="img/react.svg" class="img-fluid" alt="" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+<!--     End Street Food -->
+
+           <!-- Spot Cleanliness   -->
+    <section id="learn" class="bg-dark text-light p-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+<!--           Chart - Spot Cleanliness -->
+          <div class="col-7">
+             <div>
+              <canvas id="Cleanliness"></canvas>
+              </div>
+
+          </div>  
+
+          <div class="col-md p-5">
+            <h2>Spot Cleanliness</h2>
+            <p class="lead">
+              30% tourists think, tourists spots of Cox’s Bazar are not clean enough, which is a concern for us.<br>
+Though majority of the tourists (86%) think that, they are cooperating to keep the spots clean.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+           <!-- End Spot Cleanliness   -->
+
+    <!-- Question Accordion -->
+
+
+    <section id="instructors" class="p-5 bg-primary">
+      <div class="container">
+        <h2 class="text-center text-white  mb-5">Recommendations</h2>
+
+        <div class="row g-4">
+          
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-3">Hotel & Food</h3>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-3">Transportation</h3>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-3">Cleanness</h3>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-3">Tourism Sector</h3>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda accusamus nobis sed cupiditate iusto? Quibusdam.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+        <p class="lead">Copyright &copy; 2021 Frontend Bootcamp</p>
+
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+          <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="enroll"
+      tabindex="-1"
+      aria-labelledby="enrollLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="enrollLabel">Enrollment</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="lead">Fill out this form and we will get back to you</p>
+            <form>
+              <div class="mb-3">
+                <label for="first-name" class="col-form-label">
+                  First Name:
+                </label>
+                <input type="text" class="form-control" id="first-name" />
+              </div>
+              <div class="mb-3">
+                <label for="last-name" class="col-form-label">Last Name:</label>
+                <input type="text" class="form-control" id="last-name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="col-form-label">Phone:</label>
+                <input type="tel" class="form-control" id="phone" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+
+    <script>
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-71.060982, 42.35725],
+        zoom: 18,
+      })
+    </script>
+  {%  include 'dash/Chart.html' %}
+  </body>
+</html>

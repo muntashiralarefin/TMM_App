@@ -66,7 +66,12 @@ def home(request):
     return [level, percentage, countres, total]
 
   # ###############################################################
-  # b3a = analysis2('b3')
+  c2a = analysis2('c2')
+  d4a = analysis2('d4')
+  d2a = analysis2('d2')
+  d7a = analysis2('d7')
+  e4a = analysis2('e4')
+  f3a = analysis2('f3')
   # #b4a = analysis3()
   # print('Result B3: ',b3a)
   # r = analysis3('b6', CBT_attraction, 'cbt_attraction')
@@ -77,11 +82,13 @@ def home(request):
   # b3_v = list(dic.values())
   # fig = px.bar(x=["a", "b", "c"], y=[1, 3, 2])
 
-  return render(request, 'dash/dashboard.html', {
-    # 'b3_l':b3_l,
-    # 'b3_v':b3_v,
-    # 'dic':dic,
-    # 'r':r
+  return render(request, 'dash/home.html', {
+    'c2a':c2a,
+    'd4a':d4a,
+    'd2a':d2a,
+    'd7a':d7a,
+    'e4a':e4a,
+    'f3a':f3a
   })
 
 def survey(request):
